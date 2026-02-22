@@ -1,73 +1,175 @@
-# React + TypeScript + Vite
+# 🏷️ Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> [!NOTE]
+> Aplicação web de portfólio, desenvolvida em grupo, com o objetivo de apresentar de forma organizada **projetos**, **habilidades** e **informações profissionais**.  
+> O repositório é compartilhado entre os integrantes: a estrutura e o código-base são comuns, enquanto o conteúdo (textos, links e projetos) é personalizável por cada pessoa.
 
-Currently, two official plugins are available:
+<div align="center">
+  <img src="frontend/src/assets/react.svg" alt="Logo do Projeto" width="120" />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚧 Status do Projeto
+![Vite](https://img.shields.io/badge/Vite-latest-007ec6?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-latest-007ec6?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-latest-007ec6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-latest-007ec6?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/github/license/PHnsilva/portfolio-grupo?style=for-the-badge)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📚 Índice
+- [Links Úteis](#-links-úteis)
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias](#-tecnologias)
+- [Arquitetura](#-arquitetura)
+- [Como Rodar Localmente](#-como-rodar-localmente)
+- [Build](#-build)
+- [Deploy](#-deploy)
+- [Estrutura de Pastas](#-estrutura-de-pastas)
+- [Demonstração](#-demonstração)
+- [Testes](#-testes)
+- [Autores](#-autores)
+- [Licença](#-licença)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🔗 Links Úteis
+- 🐙 **Repositório:** https://github.com/PHnsilva/portfolio-grupo.git
+- 🌐 **Demo (opcional):** <link-da-demo>
+- 🧩 **Wireframe (opcional):** <link-do-wireframe>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📝 Sobre o Projeto
+Este projeto é um **portfólio web** voltado para apresentação profissional, contendo seções como **Home**, **Sobre**, **Projetos**, **Habilidades** e **Contato**.  
+A proposta visual pode incorporar uma temática relacionada a jogos, mantendo uma comunicação e estrutura adequadas para uso acadêmico e profissional.
+
+---
+
+## ✨ Funcionalidades
+- Página inicial com apresentação geral
+- Seção “Sobre” (resumo, objetivos, interesses)
+- Seção “Projetos” (cards com título, descrição e links)
+- Seção “Habilidades” (stack e competências)
+- Seção “Contato” (links e formas de contato) *(a definir por integrante)*
+- Minigames clicáveis *(em desenvolvimento / a definir)*
+
+---
+
+## 🛠 Tecnologias
+- **React**
+- **Vite**
+- **TypeScript**
+- **Tailwind CSS**
+
+---
+
+## 🏗 Arquitetura
+Aplicação SPA com componentes React, roteamento (se necessário) e estilização via Tailwind.
+
+```text
+Visão (alto nível)
+
+UI (React Components)
+  ├─ Pages (Home, About, Projects, Skills, Contact)
+  ├─ Components (Navbar, Cards, Sections)
+  └─ Assets (SVGs, imagens, fontes)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔧 Como Rodar Localmente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Pré-requisitos
+- Node.js (LTS)
+- npm (ou yarn/pnpm)
+
+### Instalação
+```bash
+# na raiz do repositório
+cd frontend
+npm install
 ```
+
+### Ambiente de desenvolvimento
+```bash
+npm run dev
+```
+
+Acesse: `http://localhost:5173`
+
+### Variáveis de ambiente
+
+```env
+# exemplo
+VITE_SITE_NAME="Portfólio"
+```
+
+---
+
+## 🧱 Build
+```bash
+cd frontend
+npm run build
+npm run preview
+```
+
+---
+
+## 🚀 Deploy
+Opções comuns:
+- Vercel
+
+---
+
+## 📂 Estrutura de Pastas
+
+```text
+PORTFOLIO-GRUPO/
+  ├─ frontend/
+  │  ├─ public/
+  │  ├─ src/
+  │  │  ├─ assets/
+  │  │  ├─ App.tsx
+  │  │  ├─ main.tsx
+  │  │  └─ index.css
+  │  ├─ index.html
+  │  ├─ package.json
+  │  ├─ vite.config.ts
+  │  └─ tsconfig*.json
+  ├─ LICENSE
+  └─ README.md
+```
+
+---
+
+## 🎥 Demonstração
+- (a definir) Prints/GIFs da aplicação rodando
+- Sugestão: salvar imagens em `frontend/public/` ou `docs/` e referenciar aqui
+
+---
+
+## 🧪 Testes
+Ainda não há testes automatizados.
+
+Vitest + Testing Library.
+
+---
+
+## 👥 Autores
+Projeto em grupo (3 integrantes).  
+
+
+| Nome | GitHub | LinkedIn |
+|------|--------|----------|
+| Pedro .H.S | <link-github> | <link-linkedin> |
+| Felipe .P | <link-github> | <link-linkedin> |
+| Gabriel .P | <link-github> | <link-linkedin> |
+
+---
+
+## 📄 Licença
+Este projeto está sob a licença **MIT**. Veja o arquivo `LICENSE`.
