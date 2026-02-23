@@ -9,7 +9,6 @@ import ProjectCard from "../components/UI/ProjectCard";
 import { profile } from "../data/profile";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
-import { education } from "../data/education";
 import { skillGroups } from "../data/skills";
 
 function scrollToHash(hash: string) {
@@ -68,23 +67,12 @@ export default function Home() {
       <section id="sobre" className="section">
         <SectionTitle title="Sobre Mim" subtitle="Breve apresentação (PT/EN)" />
 
-        <div className="grid-2">
+        <div className="grid">
           <div className="card">
-            <h3 style={{ marginTop: 0 }}>Português</h3>
+            <h3 style={{ marginTop: 0 }}>Quem Sou Eu</h3>
             {profile.about.map((p) => (
               <p key={p} style={{ margin: "10px 0" }}>{p}</p>
             ))}
-          </div>
-
-          <div className="card">
-            <h3 style={{ marginTop: 0 }}>English</h3>
-            <p style={{ margin: "10px 0" }}>
-              I’m a software engineer focused on building reliable web applications and APIs.
-              I enjoy turning business requirements into clean, maintainable solutions.
-            </p>
-            <p style={{ margin: "10px 0" }}>
-              I care about performance, documentation and incremental delivery with solid teamwork.
-            </p>
           </div>
         </div>
 
@@ -128,31 +116,6 @@ export default function Home() {
               <div className="timeline-content">
                 <ProjectCard project={p} />
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FORMAÇÃO */}
-      <section id="formacao" className="section">
-        <SectionTitle title="Formação Acadêmica" subtitle="Graduação e cursos" />
-
-        <div className="stack">
-          {education.map((ed) => (
-            <div className="card" key={`${ed.institution}-${ed.course}`}>
-              <div className="row-between">
-                <div>
-                  <strong>{ed.institution}</strong>
-                  <div className="muted">{ed.course}</div>
-                </div>
-                <div className="badge">{ed.period}</div>
-              </div>
-
-              {ed.details?.length ? (
-                <ul style={{ margin: "10px 0 0" }}>
-                  {ed.details.map((d) => <li key={d}>{d}</li>)}
-                </ul>
-              ) : null}
             </div>
           ))}
         </div>

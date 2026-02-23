@@ -14,9 +14,7 @@ export default function Navbar() {
       { id: "sobre", label: "Sobre" },
       { id: "experiencias", label: "Experiências" },
       { id: "projetos", label: "Projetos" },
-      { id: "formacao", label: "Formação" },
       { id: "competencias", label: "Competências" },
-      { id: "contato", label: "Contato" },
     ],
     []
   );
@@ -56,7 +54,7 @@ export default function Navbar() {
       <nav className="navbar-inner">
         <div className="navbar-brand">
           <span className="brand-dot" aria-hidden="true" />
-          <strong>Felipe</strong>
+          <strong>Felipe Luiz Parreiras Lima</strong>
         </div>
 
         <div className="navbar-links">
