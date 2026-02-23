@@ -31,7 +31,7 @@
 ## 🔗 Links Úteis
 - 🐙 **Repositório:** https://github.com/PHnsilva/portfolio-grupo.git
 - 🌐 **Demo (opcional):** <link-da-demo>
-- 🧩 **Wireframe:** [<link-do-wireframe>](https://www.figma.com/design/cj6OHrQLX4ekdmerVQJfY4/Untitled?node-id=0-1&t=HXfjQX6N9eGa6xbW-1)
+- 🧩 **Wireframe:** https://www.figma.com/design/cj6OHrQLX4ekdmerVQJfY4/Untitled?node-id=0-1&t=HXfjQX6N9eGa6xbW-1
 
 ---
 
