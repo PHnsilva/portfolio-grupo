@@ -157,9 +157,9 @@ Projeto em grupo (3 integrantes).
 
 | Nome | GitHub | LinkedIn |
 |------|--------|----------|
-| Pedro .H.S | <link-github> | <link-linkedin> |
-| Felipe .P | <link-github> | <link-linkedin> |
-| Gabriel .P | <link-github> | <link-linkedin> |
+| Pedro .H.S | https://github.com/PHnsilva | <link-linkedin> |
+| Felipe .P | https://github.com/FelipeParreiras | https://www.linkedin.com/in/felipe-parreiras04/ |
+| Gabriel .P | https://github.com/GpNonato | www.linkedin.com/in/gabriel-nonato-3a3a98376 |
 
 ---
 
