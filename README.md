@@ -30,7 +30,7 @@
 
 ## 🔗 Links Úteis
 - 🐙 **Repositório:** https://github.com/PHnsilva/portfolio-grupo.git
-- 🌐 **Demo (opcional):** <link-da-demo>
+- 🌐 **Demo (opcional):** https://portfolio-grupo.vercel.app
 - 🧩 **Wireframe:** https://www.figma.com/design/cj6OHrQLX4ekdmerVQJfY4/Untitled?node-id=0-1&t=HXfjQX6N9eGa6xbW-1
 
 ---
@@ -59,17 +59,96 @@ A proposta visual pode incorporar uma temática relacionada a jogos, mantendo um
 
 ---
 
-## 🏗 Arquitetura
-Aplicação SPA com componentes React, roteamento (se necessário) e estilização via Tailwind.
 
-```text
-Visão (alto nível)
+---
 
-UI (React Components)
-  ├─ Pages (Home, About, Projects, Skills, Contact)
-  ├─ Components (Navbar, Cards, Sections)
-  └─ Assets (SVGs, imagens, fontes)
-```
+## Arquitetura
+
+```md
+## 🏗️ Arquitetura do Projeto
+
+O projeto segue uma arquitetura **frontend modular** com separação por responsabilidades, facilitando manutenção, reutilização de componentes e personalização por integrante.
+
+### Visão Geral
+- **`frontend/src/pages`** → páginas da aplicação (rotas principais)
+- **`frontend/src/components`** → componentes reutilizáveis e estrutura visual
+- **`frontend/src/data`** → dados estáticos do portfólio (perfil, projetos, skills, etc.)
+- **`frontend/src/types`** → tipagens TypeScript compartilhadas
+- **`frontend/src/routes`** → configuração central de rotas
+- **`frontend/src/assets`** → arquivos estáticos (ícones, imagens, svgs)
+
+---
+
+### Camadas
+
+#### 1) Apresentação (Pages + Components)
+Responsável pela interface e renderização dos dados.
+
+- **Pages (`pages/`)**
+  - Representam telas completas da aplicação:
+  - `Home`, `About`, `Projects`, `ProjectDetails`, `Skills`, `Experience`, `Education`, `Contact`, `NotFound`
+
+- **Components (`components/`)**
+  - Componentes reutilizáveis para layout e UI:
+  - **Layout/**: estrutura global (`Navbar`, `Footer`, `Layout`)
+  - **UI/**: blocos reutilizáveis (`ProjectCard`, `ExperienceCard`, `Tag`, `SectionTitle`)
+
+---
+
+#### 2) Dados (Data)
+Responsável por centralizar o conteúdo exibido no portfólio.
+
+Arquivos em `data/`:
+- `profile.ts`
+- `projects.ts`
+- `skills.ts`
+- `experience.ts`
+- `education.ts`
+
+Essa abordagem facilita:
+- personalização por integrante
+- manutenção de conteúdo sem alterar componentes
+- futura migração para API/backend
+
+---
+
+#### 3) Tipagem (Types)
+Responsável por definir contratos de dados com TypeScript.
+
+- `types/portfolio.ts`
+
+Benefícios:
+- maior consistência entre dados e componentes
+- menos erros em tempo de desenvolvimento
+- melhor escalabilidade do projeto
+
+---
+
+#### 4) Roteamento (Routes)
+Responsável pela navegação entre páginas.
+
+- `routes/AppRoutes.tsx`
+
+Centraliza as rotas da aplicação e mantém a navegação organizada.
+
+---
+
+### Fluxo de Renderização (resumo)
+
+1. `main.tsx` inicializa a aplicação
+2. `App.tsx` carrega a estrutura principal
+3. `AppRoutes.tsx` define qual página será exibida
+4. As páginas consomem dados de `data/`
+5. Os componentes de `components/` renderizam os blocos visuais reutilizáveis
+
+---
+
+### Princípios adotados
+- **Separação de responsabilidades**
+- **Reutilização de componentes**
+- **Tipagem com TypeScript**
+- **Organização escalável por domínio**
+- **Facilidade de personalização do conteúdo**
 
 ---
 
@@ -117,37 +196,92 @@ Opções comuns:
 
 ---
 
-## 📂 Estrutura de Pastas
+## 📁 Estrutura do Projeto
 
 ```text
-PORTFOLIO-GRUPO/
-  ├─ frontend/
-  │  ├─ public/
-  │  ├─ src/
-  │  │  ├─ assets/
-  │  │  ├─ App.tsx
-  │  │  ├─ main.tsx
-  │  │  └─ index.css
-  │  ├─ index.html
-  │  ├─ package.json
-  │  ├─ vite.config.ts
-  │  └─ tsconfig*.json
-  ├─ LICENSE
-  └─ README.md
+portfolio-grupo/
+├─ docs/
+├─ frontend/
+│  ├─ node_modules/
+│  ├─ public/
+│  ├─ src/
+│  │  ├─ assets/
+│  │  │  └─ react.svg
+│  │  ├─ components/
+│  │  │  ├─ Layout/
+│  │  │  │  ├─ Footer.tsx
+│  │  │  │  ├─ Layout.tsx
+│  │  │  │  └─ Navbar.tsx
+│  │  │  └─ UI/
+│  │  │     ├─ ExperienceCard.tsx
+│  │  │     ├─ ProjectCard.tsx
+│  │  │     ├─ SectionTitle.tsx
+│  │  │     └─ Tag.tsx
+│  │  ├─ data/
+│  │  │  ├─ education.ts
+│  │  │  ├─ experience.ts
+│  │  │  ├─ profile.ts
+│  │  │  ├─ projects.ts
+│  │  │  └─ skills.ts
+│  │  ├─ pages/
+│  │  │  ├─ About.tsx
+│  │  │  ├─ Contact.tsx
+│  │  │  ├─ Education.tsx
+│  │  │  ├─ Experience.tsx
+│  │  │  ├─ Home.tsx
+│  │  │  ├─ NotFound.tsx
+│  │  │  ├─ ProjectDetails.tsx
+│  │  │  ├─ Projects.tsx
+│  │  │  └─ Skills.tsx
+│  │  ├─ routes/
+│  │  │  └─ AppRoutes.tsx
+│  │  ├─ types/
+│  │  │  └─ portfolio.ts
+│  │  ├─ App.css
+│  │  ├─ App.tsx
+│  │  ├─ index.css
+│  │  └─ main.tsx
+│  ├─ .gitignore
+│  ├─ eslint.config.js
+│  ├─ index.html
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ README.md
+│  ├─ tsconfig.app.json
+│  ├─ tsconfig.json
+│  ├─ tsconfig.node.json
+│  └─ vite.config.ts
+├─ .gitignore
+├─ LICENSE
+└─ README.md
 ```
 
 ---
 
 ## 🎥 Demonstração
-- (a definir) Prints/GIFs da aplicação rodando
-- Sugestão: salvar imagens em `frontend/public/` ou `docs/` e referenciar aqui
+
+### Início
+![Tela inicial](docs/prints/inicio.png)
+
+### Sobre
+![Seção sobre](docs/prints/sobre.png)
+
+### Experiência
+![Seção de experiência](docs/prints/experiencias.png)
+
+### Projetos
+![Seção de projetos](docs/prints/projetos.png)
+
+### Competências
+![Seção de competências](docs/prints/competencias.png)
+
+### Contato
+![Seção de contato](docs/prints/contatos.png)
 
 ---
 
 ## 🧪 Testes
 Ainda não há testes automatizados.
-
-Vitest + Testing Library.
 
 ---
 
@@ -157,7 +291,7 @@ Projeto em grupo (3 integrantes).
 
 | Nome | GitHub | LinkedIn |
 |------|--------|----------|
-| Pedro .H.S | https://github.com/PHnsilva | <link-linkedin> |
+| Pedro .H.S | https://github.com/PHnsilva | https://www.linkedin.com/in/phnsilva1/ |
 | Felipe .P | https://github.com/FelipeParreiras | https://www.linkedin.com/in/felipe-parreiras04/ |
 | Gabriel .P | https://github.com/GpNonato | www.linkedin.com/in/gabriel-nonato-3a3a98376 |
 
