@@ -1,13 +1,5 @@
 # 🏷️ Portfólio
 
-> [!NOTE]
-> Aplicação web de portfólio, desenvolvida em grupo, com o objetivo de apresentar de forma organizada **projetos**, **habilidades** e **informações profissionais**.  
-> O repositório é compartilhado entre os integrantes: a estrutura e o código-base são comuns, enquanto o conteúdo (textos, links e projetos) é personalizável por cada pessoa.
-
-<div align="center">
-  <img src="frontend/src/assets/react.svg" alt="Logo do Projeto" width="120" />
-</div>
-
 ---
 
 ## 🚧 Status do Projeto
@@ -39,7 +31,7 @@
 ## 🔗 Links Úteis
 - 🐙 **Repositório:** https://github.com/PHnsilva/portfolio-grupo.git
 - 🌐 **Demo (opcional):** <link-da-demo>
-- 🧩 **Wireframe (opcional):** <link-do-wireframe>
+- 🧩 **Wireframe:** [<link-do-wireframe>](https://www.figma.com/design/cj6OHrQLX4ekdmerVQJfY4/Untitled?node-id=0-1&t=HXfjQX6N9eGa6xbW-1)
 
 ---
 
