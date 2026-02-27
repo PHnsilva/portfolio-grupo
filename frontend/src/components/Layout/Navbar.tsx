@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { profile } from "../../data/profile";
+import { useI18n } from "../../i18n/I18nProvider";
 
 type NavItem = { id: string; label: string };
 
@@ -8,15 +10,17 @@ type NavItem = { id: string; label: string };
  * - Destaque automático da seção atual via IntersectionObserver
  */
 export default function Navbar() {
+  const { lang, toggleLang, t } = useI18n();
+
   const items: NavItem[] = useMemo(
     () => [
-      { id: "inicio", label: "Início" },
-      { id: "sobre", label: "Sobre" },
-      { id: "experiencias", label: "Experiências" },
-      { id: "projetos", label: "Projetos" },
-      { id: "competencias", label: "Competências" },
+      { id: "inicio", label: t("nav.home") },
+      { id: "sobre", label: t("nav.about") },
+      { id: "experiencias", label: t("nav.experience") },
+      { id: "projetos", label: t("nav.projects") },
+      { id: "competencias", label: t("nav.skills") },
     ],
-    []
+    [t, lang]
   );
 
   const [activeId, setActiveId] = useState<string>("inicio");
@@ -54,7 +58,7 @@ export default function Navbar() {
       <nav className="navbar-inner">
         <div className="navbar-brand">
           <span className="brand-dot" aria-hidden="true" />
-          <strong>Felipe Luiz Parreiras Lima</strong>
+          <strong>{profile.name}</strong>
         </div>
 
         <div className="navbar-links">
@@ -70,8 +74,18 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-right">
+          <button
+            type="button"
+            className="navlink"
+            onClick={toggleLang}
+            aria-label={t("nav.langToggle")}
+            title={t("nav.langToggle")}
+            style={{ cursor: "pointer" }}
+          >
+            {t("nav.langToggle")} • {lang.toUpperCase()}
+          </button>
           <a className="nav-cta" href="#contato">
-            Contato
+            {t("nav.contact")}
           </a>
         </div>
       </nav>
