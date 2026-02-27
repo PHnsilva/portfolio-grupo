@@ -1,35 +1,33 @@
 import SectionTitle from "../components/UI/SectionTitle";
-import { profile } from "../data/profile";
+import { useI18n } from "../i18n/I18nProvider";
 
 export default function About() {
+  const { t, ta } = useI18n();
+
   return (
     <div className="page">
-      <SectionTitle title="Sobre Mim" />
+      <SectionTitle title={t("profile.aboutTitle")} />
 
       <div className="card">
         <div className="prose">
-          {profile.about.map((p) => (
+          {ta("profile.about").map((p) => (
             <p key={p}>{p}</p>
           ))}
         </div>
 
         <hr className="divider" />
 
-        <h2 className="h2">O Que Eu Faço</h2>
+        <h2 className="h2">{t("profile.doTitle")}</h2>
 
         <div className="grid-2">
           <div className="mini-card">
-            <h3>Desenvolvimento Web</h3>
-            <p className="muted">
-              Interfaces responsivas, componentes reutilizáveis e foco em experiência do usuário.
-            </p>
+            <h3>{t("profile.webTitle")}</h3>
+            <p className="muted">{t("profile.webDesc")}</p>
           </div>
 
           <div className="mini-card">
-            <h3>APIs e Backend</h3>
-            <p className="muted">
-              Integrações, regras de negócio, validações e performance para aplicações em produção.
-            </p>
+            <h3>{t("profile.apiTitle")}</h3>
+            <p className="muted">{t("profile.apiDesc")}</p>
           </div>
         </div>
       </div>

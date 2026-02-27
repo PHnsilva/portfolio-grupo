@@ -10,6 +10,7 @@ import { profile } from "../data/profile";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 import { skillGroups } from "../data/skills";
+import { useI18n } from "../i18n/I18nProvider";
 
 function scrollToHash(hash: string) {
   if (!hash) return;
@@ -21,6 +22,7 @@ function scrollToHash(hash: string) {
 
 export default function Home() {
   const location = useLocation();
+  const { t, ta } = useI18n();
 
   useEffect(() => {
     const t = window.setTimeout(() => scrollToHash(location.hash), 0);
@@ -33,11 +35,11 @@ export default function Home() {
       <section id="inicio" className="section">
         <div className="hero">
           <div className="hero-left">
-            <SectionTitle title={profile.name} subtitle={profile.role} />
-            <p className="muted">{profile.headline}</p>
+            <SectionTitle title={profile.name} subtitle={t("profile.role")} />
+            <p className="muted">{t("profile.headline")}</p>
             <div className="actions">
-              <a className="btn btn-primary" href="#projetos">Ver Projetos</a>
-              <a className="btn btn-ghost" href="#contato">Contato</a>
+              <a className="btn btn-primary" href="#projetos">{t("home.actionsProjects")}</a>
+              <a className="btn btn-ghost" href="#contato">{t("home.actionsContact")}</a>
             </div>
           </div>
 
@@ -47,16 +49,12 @@ export default function Home() {
         </div>
 
         <div className="card" style={{ marginTop: 18 }}>
-          <h2 style={{ marginTop: 0 }}>Resumo</h2>
+          <h2 style={{ marginTop: 0 }}>{t("home.summaryTitle")}</h2>
           <ul className="checklist">
-            {[
-              "Desenvolvimento front-end e back-end com foco em qualidade e entrega.",
-              "Integração entre sistemas e automações em ambiente real de negócio.",
-              "Trabalho em equipe com boas práticas e entregas incrementais.",
-            ].map((t) => (
-              <li key={t} className="check-item">
+            {ta("home.summary").map((line) => (
+              <li key={line} className="check-item">
                 <span className="check" aria-hidden="true">✓</span>
-                <span>{t}</span>
+                <span>{line}</span>
               </li>
             ))}
           </ul>
@@ -65,31 +63,27 @@ export default function Home() {
 
       {/* SOBRE */}
       <section id="sobre" className="section">
-        <SectionTitle title="Sobre Mim" subtitle="Breve apresentação (PT/EN)" />
+        <SectionTitle title={t("profile.aboutTitle")} subtitle={t("profile.aboutSubtitle")} />
 
         <div className="grid">
           <div className="card">
-            <h3 style={{ marginTop: 0 }}>Quem Sou Eu</h3>
-            {profile.about.map((p) => (
+            <h3 style={{ marginTop: 0 }}>{t("profile.whoTitle")}</h3>
+            {ta("profile.about").map((p) => (
               <p key={p} style={{ margin: "10px 0" }}>{p}</p>
             ))}
           </div>
         </div>
 
         <div className="card" style={{ marginTop: 14 }}>
-          <h3 style={{ marginTop: 0 }}>O que eu faço</h3>
+          <h3 style={{ marginTop: 0 }}>{t("profile.doTitle")}</h3>
           <div className="grid-2" style={{ marginTop: 10 }}>
             <div>
-              <strong>Desenvolvimento Web</strong>
-              <p className="muted">
-                Interfaces com React/TypeScript, foco em UX, consistência visual e performance.
-              </p>
+              <strong>{t("profile.webTitle")}</strong>
+              <p className="muted">{t("profile.webDesc")}</p>
             </div>
             <div>
-              <strong>APIs e Back-end</strong>
-              <p className="muted">
-                Integrações, modelagem de dados e serviços com atenção a estabilidade e boas práticas.
-              </p>
+              <strong>{t("profile.apiTitle")}</strong>
+              <p className="muted">{t("profile.apiDesc")}</p>
             </div>
           </div>
         </div>
@@ -97,7 +91,7 @@ export default function Home() {
 
       {/* EXPERIÊNCIAS */}
       <section id="experiencias" className="section">
-        <SectionTitle title="Experiências" subtitle="Atuação profissional, estágios, freelas e projetos" />
+        <SectionTitle title={t("home.experienceTitle")} subtitle={t("home.experienceSubtitle")} />
         <div className="stack">
           {experience.map((e) => (
             <ExperienceCard key={`${e.company}-${e.role}`} item={e} />
@@ -107,7 +101,7 @@ export default function Home() {
 
       {/* PROJETOS */}
       <section id="projetos" className="section">
-        <SectionTitle title="Projetos" subtitle="Linha do tempo (do mais antigo ao mais recente)" />
+        <SectionTitle title={t("home.projectsTitle")} subtitle={t("home.projectsSubtitle")} />
 
         <div className="timeline">
           {projects.map((p, idx) => (
@@ -123,7 +117,7 @@ export default function Home() {
 
       {/* COMPETÊNCIAS */}
       <section id="competencias" className="section">
-        <SectionTitle title="Competências" subtitle="Habilidades técnicas, ferramentas e interpessoais" />
+        <SectionTitle title={t("home.skillsTitle")} subtitle={t("home.skillsSubtitle")} />
 
         <div className="stack">
           {skillGroups.map((group) => (
@@ -139,7 +133,7 @@ export default function Home() {
 
       {/* CONTATO */}
       <section id="contato" className="section">
-        <SectionTitle title="Contato" subtitle="Links e formulário (envio via e-mail)" />
+        <SectionTitle title={t("home.contactTitle")} subtitle={t("home.contactSubtitle")} />
 
         <div className="grid-contact">
           <div className="card">
@@ -156,7 +150,7 @@ export default function Home() {
                 <span className="contact-icon" aria-hidden="true">in</span>
                 <div>
                   <div className="contact-label">LinkedIn</div>
-                  <div className="muted">Abrir perfil</div>
+                  <div className="muted">{t("home.openProfile")}</div>
                 </div>
               </a>
 
@@ -164,7 +158,7 @@ export default function Home() {
                 <span className="contact-icon" aria-hidden="true">⌂</span>
                 <div>
                   <div className="contact-label">GitHub</div>
-                  <div className="muted">Ver repositórios</div>
+                  <div className="muted">{t("home.viewRepos")}</div>
                 </div>
               </a>
             </div>
@@ -180,6 +174,8 @@ export default function Home() {
 }
 
 function ContactForm() {
+  const { t } = useI18n();
+
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -188,7 +184,7 @@ function ContactForm() {
     const email = String(fd.get("email") ?? "").trim();
     const message = String(fd.get("message") ?? "").trim();
 
-    const subject = encodeURIComponent(`Contato via Portfólio — ${name || "(sem nome)"}`);
+    const subject = encodeURIComponent(`${t("home.mailSubject")} — ${name || t("home.mailNoName")}`);
     const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`);
 
     window.location.href = `mailto:${profile.links.email}?subject=${subject}&body=${body}`;
@@ -196,25 +192,25 @@ function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="form">
-      <h3 style={{ marginTop: 0 }}>Envie uma mensagem</h3>
+      <h3 style={{ marginTop: 0 }}>{t("home.formTitle")}</h3>
 
       <label className="field">
-        <span>Seu nome</span>
-        <input name="name" type="text" placeholder="Seu Nome" required />
+        <span>{t("home.formName")}</span>
+        <input name="name" type="text" placeholder={t("home.formNamePh")} required />
       </label>
 
       <label className="field">
-        <span>Seu e-mail</span>
-        <input name="email" type="email" placeholder="Seu Email" required />
+        <span>{t("home.formEmail")}</span>
+        <input name="email" type="email" placeholder={t("home.formEmailPh")} required />
       </label>
 
       <label className="field">
-        <span>Sua mensagem</span>
-        <textarea name="message" placeholder="Sua Mensagem" rows={5} required />
+        <span>{t("home.formMessage")}</span>
+        <textarea name="message" placeholder={t("home.formMessagePh")} rows={5} required />
       </label>
 
       <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 10 }}>
-        <button className="btn btn-primary" type="submit">Enviar</button>
+        <button className="btn btn-primary" type="submit">{t("home.formSend")}</button>
       </div>
     </form>
   );
