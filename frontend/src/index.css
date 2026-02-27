@@ -149,14 +149,12 @@ a:hover {
 .navlink {
   padding: 8px 10px;
   border-radius: 10px;
-  color: rgba(230, 237, 243, 0.92);
   font-weight: 500;
   font-size: 13px;
 }
 
 .navlink:hover {
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .navlink.active {
