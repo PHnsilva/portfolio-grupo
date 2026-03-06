@@ -81,7 +81,7 @@ export default function Contact() {
               ✉
             </div>
             <div>
-              <div className="contact-label">Email</div>
+              <div className="contact-label">{t("contact.labels.email")}</div>
               <a href={mailtoEmail}>{profile.links.email}</a>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function Contact() {
               in
             </div>
             <div>
-              <div className="contact-label">LinkedIn</div>
+              <div className="contact-label">{t("contact.labels.linkedin")}</div>
               <a href={mailtoLinkedin}>
                 {profile.links.linkedin}
               </a>
@@ -103,7 +103,7 @@ export default function Contact() {
               GH
             </div>
             <div>
-              <div className="contact-label">GitHub</div>
+              <div className="contact-label">{t("contact.labels.github")}</div>
               <a href={mailtoGithub}>
                 {profile.links.github}
               </a>

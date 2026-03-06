@@ -9,14 +9,16 @@ type Props = {
 
 export default function ProjectCard({ project }: Props) {
   const { t } = useI18n();
+  const name = t(`projects.items.${project.slug}.name`);
+  const description = t(`projects.items.${project.slug}.description`);
 
   return (
     <article className="card project-card">
       <div className="project-thumb" aria-hidden="true" />
 
       <div className="project-body">
-        <h3 className="card-title">{project.name}</h3>
-        <p className="muted">{project.description}</p>
+        <h3 className="card-title">{name}</h3>
+        <p className="muted">{description}</p>
 
         <div className="tag-row">
           {project.stack.map((s) => (
@@ -30,7 +32,7 @@ export default function ProjectCard({ project }: Props) {
           </Link>
           {project.links.repo ? (
             <a className="btn btn-ghost" href={project.links.repo} target="_blank" rel="noreferrer">
-              GitHub
+              {t("projects.github")}
             </a>
           ) : null}
           {project.links.live ? (

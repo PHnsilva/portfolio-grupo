@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import "../../styles/RareProfessionalIntro.css";
+import styles from "../../styles/RareProfessionalIntro.module.css";
 
 type Props = {
   onFinish: () => void;
@@ -46,19 +46,15 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
 
     setIsExiting(true);
 
-    // tempo da animação de "janela abrindo"
     window.setTimeout(() => {
       onFinish();
     }, 900);
   };
 
-  // Pular (Enter/Esc/Espaço ou clique)
   useEffect(() => {
     const skip = () => {
       if (finished.current) return;
       cancelled.current = true;
-
-      // deixa um mini "fadeOut" antes de acionar a saída
       setPhase("fadeOut");
       window.setTimeout(() => finish(), 220);
     };
@@ -66,6 +62,7 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" || e.key === "Escape" || e.key === " ") skip();
     };
+
     const onClick = () => skip();
 
     document.addEventListener("keydown", onKey);
@@ -77,12 +74,10 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
     };
   }, []);
 
-  // Orquestração das fases
   useEffect(() => {
     cancelled.current = false;
 
     async function run() {
-      // 1) SCAN
       setPhase("scan");
       setScanProgress(0);
       setTyped("");
@@ -99,27 +94,22 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
       }
       if (cancelled.current) return;
 
-      // 2) SCAN DONE (pisca)
       setPhase("scanDone");
       await sleep(1100);
       if (cancelled.current) return;
 
-      // 3) dramatic fade (mas mantendo o card renderizado)
       setPhase("dramaticFade");
       await sleep(520);
       if (cancelled.current) return;
 
-      // 4) PROMPT
       setPhase("prompt");
       await typePrompt(promptLines, setTyped, cancelled);
       if (cancelled.current) return;
 
-      // 5) prompt fade out
       setPhase("fadeOut");
       await sleep(520);
       if (cancelled.current) return;
 
-      // 6) loading...
       setPhase("loading");
       await sleep(650);
       if (cancelled.current) return;
@@ -136,45 +126,56 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
 
   return (
     <div
-      className={`rpOverlay rpPhase-${phase} ${isExiting ? "rpExit" : ""}`}
+      className={[
+        styles.rpOverlay,
+        phase === "dramaticFade" ? styles.rpPhaseDramaticFade : "",
+        isExiting ? styles.rpExit : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       role="dialog"
       aria-label="Intro do portfólio"
     >
-      {/* SCAN (inclui dramaticFade para não ficar tela vazia) */}
       {(phase === "scan" || phase === "scanDone" || phase === "dramaticFade") && (
-        <div className="rpCard">
-          <div className="rpTitle">escaneando profissional</div>
+        <div className={styles.rpCard}>
+          <div className={styles.rpTitle}>escaneando profissional</div>
 
-          <div className="rpScanBar" aria-label="barra de escaneamento">
-            <div className="rpScanFill" style={{ width: `${scanProgress}%` }} />
-            <div className="rpScanShine" />
+          <div className={styles.rpScanBar} aria-label="barra de escaneamento">
+            <div className={styles.rpScanFill} style={{ width: `${scanProgress}%` }} />
+            <div className={styles.rpScanShine} />
           </div>
 
-          <div className="rpHint">clique ou pressione ENTER para pular</div>
+          <div className={styles.rpHint}>clique ou pressione ENTER para pular</div>
 
-          {phase === "scanDone" && <div className="rpDoneBlink">escaneamento concluido!</div>}
-          {phase === "dramaticFade" && <div className="rpDoneBlink">iniciando análise...</div>}
+          {phase === "scanDone" && (
+            <div className={styles.rpDoneBlink}>escaneamento concluido!</div>
+          )}
+
+          {phase === "dramaticFade" && (
+            <div className={styles.rpDoneBlink}>iniciando análise...</div>
+          )}
         </div>
       )}
 
-      {/* PROMPT */}
       {(phase === "prompt" || phase === "fadeOut" || phase === "loading") && (
-        <div className="rpTerminalWrap">
-          <div className="rpTerminalTop">
-            <span className="rpDot red" />
-            <span className="rpDot yellow" />
-            <span className="rpDot green" />
-            <span className="rpTerminalTitle">C:\\Users\\visitor</span>
+        <div className={styles.rpTerminalWrap}>
+          <div className={styles.rpTerminalTop}>
+            <span className={`${styles.rpDot} ${styles.red}`} />
+            <span className={`${styles.rpDot} ${styles.yellow}`} />
+            <span className={`${styles.rpDot} ${styles.green}`} />
+            <span className={styles.rpTerminalTitle}>C:\Users\visitor</span>
           </div>
 
           <pre
-            className={`rpTerminalBody ${phase === "fadeOut" ? "rpFadeOut" : ""}`}
+            className={`${styles.rpTerminalBody} ${phase === "fadeOut" ? styles.rpFadeOut : ""}`}
             dangerouslySetInnerHTML={{
-              __html: escapeHtml(typed) + (phase === "prompt" ? `<span class="rpCursor"></span>` : ""),
+              __html:
+                escapeHtml(typed) +
+                (phase === "prompt" ? `<span class="${styles.rpCursor}"></span>` : ""),
             }}
           />
 
-          {phase === "loading" && <div className="rpLoading">carregando...</div>}
+          {phase === "loading" && <div className={styles.rpLoading}>carregando...</div>}
         </div>
       )}
     </div>

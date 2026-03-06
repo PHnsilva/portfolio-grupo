@@ -71,7 +71,22 @@ export const dictionaries = {
       stack: "Stack",
       highlights: "Destaques",
       viewOnGithub: "Ver no GitHub",
+      github: "GitHub",
       live: "Live",
+      items: {
+        frifasfood: {
+          name: "FrifasFood",
+          description: "Sistema full-stack para pedidos e gestão de produtos.",
+          highlights: ["Autenticação e fluxo de pedidos", "Dashboard administrativo", "API REST + validações"],
+        },
+      },
+    },
+    skills: {
+      groups: {
+        tech: "Habilidades Técnicas",
+        tools: "Frameworks / Ferramentas",
+        soft: "Habilidades Interpessoais",
+      },
     },
     errors: {
       notFoundTitle: "Página não encontrada",
@@ -81,6 +96,11 @@ export const dictionaries = {
     contact: {
       title: "Contato",
       subtitle: "Vamos conversar? Escolha um canal ou envie uma mensagem.",
+      labels: {
+        email: "Email",
+        linkedin: "LinkedIn",
+        github: "GitHub",
+      },
       sendMessage: "Envie uma mensagem",
       yourName: "Seu Nome",
       yourEmail: "Seu Email",
@@ -171,7 +191,22 @@ export const dictionaries = {
       stack: "Stack",
       highlights: "Highlights",
       viewOnGithub: "View on GitHub",
+      github: "GitHub",
       live: "Live",
+      items: {
+        frifasfood: {
+          name: "FrifasFood",
+          description: "Full-stack system for ordering and product management.",
+          highlights: ["Authentication and ordering flow", "Admin dashboard", "REST API + validations"],
+        },
+      },
+    },
+    skills: {
+      groups: {
+        tech: "Technical Skills",
+        tools: "Frameworks / Tools",
+        soft: "Soft Skills",
+      },
     },
     errors: {
       notFoundTitle: "Page not found",
@@ -181,6 +216,11 @@ export const dictionaries = {
     contact: {
       title: "Contact",
       subtitle: "Let’s talk. Choose a channel or send a message.",
+      labels: {
+        email: "Email",
+        linkedin: "LinkedIn",
+        github: "GitHub",
+      },
       sendMessage: "Send a message",
       yourName: "Your Name",
       yourEmail: "Your Email",

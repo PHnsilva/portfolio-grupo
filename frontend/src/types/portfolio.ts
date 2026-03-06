@@ -20,10 +20,7 @@ export type Profile = {
 
 export type Project = {
   slug: string;
-  name: string;
-  description: string;
   stack: string[];
-  highlights: string[];
   links: ExternalLinks;
 };
 
@@ -43,6 +40,10 @@ export type EducationItem = {
 };
 
 export type SkillGroup = {
-  title: string;
+  /**
+   * Identificador estável para i18n.
+   * O título exibido deve vir do dicionário (t(...)).
+   */
+  id: "tech" | "tools" | "soft";
   items: string[];
 };

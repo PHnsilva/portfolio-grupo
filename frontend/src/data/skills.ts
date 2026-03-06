@@ -2,7 +2,7 @@ import type { SkillGroup } from "../types/portfolio";
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Habilidades Técnicas",
+    id: "tech",
     items: [
       "TypeScript",
       "React",
@@ -15,11 +15,11 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Frameworks / Ferramentas",
+    id: "tools",
     items: ["React Router", "REST APIs", "Docker (noções)", "CI/CD (noções)"],
   },
   {
-    title: "Habilidades Interpessoais",
+    id: "soft",
     items: ["Comunicação", "Colaboração", "Proatividade", "Organização", "Aprendizado contínuo"],
   },
 ];

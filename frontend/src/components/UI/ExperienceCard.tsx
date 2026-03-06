@@ -1,40 +1,48 @@
 import type { ExperienceItem } from "../../types/portfolio";
+import styles from "../../styles/ExperienceCard.module.css";
 
 type Props = {
   item: ExperienceItem;
   index?: number;
 };
 
-const iconColors = ["#1f6feb", "#2ea043", "#d29922", "#a371f7"]; // used only for small accent blocks
+const iconColors = ["#1f6feb", "#2ea043", "#d29922", "#a371f7"];
 
 export default function ExperienceCard({ item, index = 0 }: Props) {
-  const accent = iconColors[index % iconColors.length];
+  const color = iconColors[index % iconColors.length];
+
+  const company = item?.company ?? "—";
+  const role = item?.role ?? "—";
+  const period = (item as any)?.period as string | undefined;
+
+  // evita crash se highlights vier undefined
+  const highlights: string[] = Array.isArray((item as any)?.highlights)
+    ? ((item as any).highlights as string[])
+    : [];
 
   return (
-    <article className="card exp-card">
-      <div className="exp-left">
-        <div className="exp-icon" style={{ background: accent }} aria-hidden="true" />
-      </div>
-
-      <div className="exp-body">
-        <div className="exp-head">
-          <div>
-            <div className="exp-company">{item.company}</div>
-            <div className="exp-role">{item.role}</div>
-          </div>
-
-          <div className="exp-meta">
-            <span className="muted">{item.period}</span>
-            {item.badge ? <span className="badge">{item.badge}</span> : null}
-          </div>
+    <div className={styles.expCard}>
+      <div className={styles.expCardHeader}>
+        <div className={styles.expCardIcon} style={{ background: `${color}20`, color }}>
+          {company.charAt(0) || "?"}
         </div>
 
-        <ul className="exp-list">
-          {item.bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
+        <div className={styles.expCardHeadInfo}>
+          <div className={styles.expCardCompany}>{company}</div>
+          <div className={styles.expCardRole}>{role}</div>
+          {period && <div className={styles.expCardPeriod}>{period}</div>}
+        </div>
       </div>
-    </article>
+
+      <div className={styles.expCardDivider} />
+
+      <ul className={styles.expCardHighlights}>
+        {highlights.length > 0 ? (
+          highlights.map((h, i) => <li key={i}>{h}</li>)
+        ) : (
+          <li style={{ opacity: 0.7 }}>Sem detalhes adicionais.</li>
+        )}
+      </ul>
+    </div>
   );
 }

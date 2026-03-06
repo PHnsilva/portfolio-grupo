@@ -1,5 +1,5 @@
 /* ===== NAVBAR MATRIX HUD ===== */
-.nav-matrix{
+.navMatrix{
   position: sticky;
   top: 0;
   z-index: 1200;
@@ -9,7 +9,7 @@
 }
 
 /* scanlines bem leves só na navbar */
-.nav-matrix::after{
+.navMatrix::after{
   content:"";
   position:absolute;
   inset:0;
@@ -23,7 +23,7 @@
   pointer-events:none;
 }
 
-.nav-matrix-inner{
+.navMatrixInner{
   max-width: 1040px;
   margin: 0 auto;
   padding: 12px 18px 14px;
@@ -35,7 +35,7 @@
 }
 
 /* ===== Progress HUD ===== */
-.nav-progress{
+.navProgress{
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -46,7 +46,7 @@
   margin: 0 auto;
 }
 
-.nav-progress-track{
+.navProgressTrack{
   flex: 1;
   height: 6px;
   border-radius: 999px;
@@ -56,7 +56,7 @@
   box-shadow: inset 0 0 14px rgba(0,255,140,.06);
 }
 
-.nav-progress-fill{
+.navProgressFill{
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, rgba(0,255,120,.95), rgba(0,255,200,.65));
@@ -64,7 +64,7 @@
   transition: width 220ms ease;
 }
 
-.nav-progress-label{
+.navProgressLabel{
   width: 92px;
   text-align: right;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -78,7 +78,7 @@
   gap: 8px;
 }
 
-.nav-progress-dot{
+.navProgressDot{
   width: 8px;
   height: 8px;
   border-radius: 999px;
@@ -87,14 +87,14 @@
 }
 
 /* ===== Brand ===== */
-.nav-matrix-brand{
+.navMatrixBrand{
   display:flex;
   align-items:center;
   gap:10px;
   text-decoration:none;
 }
 
-.nav-matrix-dot{
+.navMatrixDot{
   width: 10px;
   height: 10px;
   border-radius: 999px;
@@ -102,13 +102,13 @@
   box-shadow: 0 0 0 4px rgba(0,255,140,.14), 0 0 22px rgba(0,255,140,.14);
 }
 
-.nav-matrix-name{
+.navMatrixName{
   color: rgba(0,255,140,.92);
   text-shadow: 0 0 14px rgba(0,255,140,.20);
   letter-spacing: .01em;
 }
 
-.nav-matrix-badge{
+.navMatrixBadge{
   margin-left: 6px;
   font-size: 11px;
   letter-spacing: .18em;
@@ -121,14 +121,14 @@
 }
 
 /* ===== Links ===== */
-.nav-matrix-links{
+.navMatrixLinks{
   display:flex;
   gap: 6px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.nav-matrix-link{
+.navMatrixLink{
   display:inline-flex;
   align-items:center;
   gap: 2px;
@@ -145,40 +145,40 @@
   transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
-.nav-matrix-link:hover{
+.navMatrixLink:hover{
   text-decoration:none;
   background: rgba(0,255,140,.06);
   border-color: rgba(0,255,140,.18);
   transform: translateY(-1px);
 }
 
-.nav-matrix-link.active{
+.navMatrixLink.active{
   background: rgba(0,255,140,.10);
   border-color: rgba(0,255,140,.28);
   color: rgba(0,255,160,.95);
   box-shadow: 0 0 22px rgba(0,255,140,.10);
 }
 
-.nav-matrix-link-prefix{
+.navMatrixLinkPrefix{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   opacity: .95;
 }
 
 /* Right side */
-.nav-matrix-right{
+.navMatrixRight{
   display:flex;
   justify-content:flex-end;
   gap: 10px;
   align-items:center;
 }
 
-.nav-matrix-btn{
+.navMatrixBtn{
   cursor:pointer;
   border: 1px solid rgba(0,255,140,.18);
   background: rgba(0,255,140,.06);
 }
 
-.nav-matrix-cta{
+.navMatrixCta{
   padding: 9px 12px;
   border-radius: 12px;
   background: rgba(0,255,140,.12);
@@ -189,24 +189,24 @@
   box-shadow: 0 0 26px rgba(0,255,140,.10);
 }
 
-.nav-matrix-cta:hover{
+.navMatrixCta:hover{
   text-decoration:none;
   background: rgba(0,255,140,.16);
 }
 
 /* Responsivo */
 @media (max-width: 960px){
-  .nav-matrix-inner{
+  .navMatrixInner{
     grid-template-columns: 1fr;
     justify-items: start;
   }
-  .nav-matrix-links{
+  .navMatrixLinks{
     justify-content: flex-start;
   }
-  .nav-matrix-right{
+  .navMatrixRight{
     justify-content: flex-start;
   }
-  .nav-progress{
+  .navProgress{
     padding: 8px 18px 0;
   }
 }

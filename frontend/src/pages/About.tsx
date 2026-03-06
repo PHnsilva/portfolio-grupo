@@ -1,35 +1,117 @@
-import SectionTitle from "../components/UI/SectionTitle";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
+import styles from "../styles/About.module.css";
+
+type Line = { text: string; speed?: number; pauseAfter?: number };
+
+function sleep(ms: number) {
+  return new Promise<void>((r) => setTimeout(r, ms));
+}
 
 export default function About() {
-  const { t, ta } = useI18n();
+  const { t, ta, lang } = useI18n();
+
+  const script: Line[] = useMemo(() => {
+    const aboutLines = ta("about.terminalLines");
+
+    return [
+      { text: "C:\\Users\\visitor> whoami", speed: 14, pauseAfter: 180 },
+      { text: t("about.nameLine"), speed: 10, pauseAfter: 220 },
+      { text: "", pauseAfter: 120 },
+      { text: "C:\\Users\\visitor> type sobre_mim.txt", speed: 14, pauseAfter: 240 },
+
+      ...aboutLines.map((line) => ({
+        text: line,
+        speed: 11,
+        pauseAfter: 120,
+      })),
+
+      { text: "", pauseAfter: 120 },
+      { text: "C:\\Users\\visitor> _", speed: 18, pauseAfter: 0 },
+    ];
+  }, [t, ta, lang]);
+
+  const [typed, setTyped] = useState("");
+  const cancelled = useRef(false);
+  const running = useRef(false);
+
+  const skip = () => {
+    cancelled.current = true;
+    setTyped(script.map((l) => l.text).join("\n") + "\n");
+    running.current = false;
+  };
+
+  const runTyping = async () => {
+    if (running.current) return;
+
+    running.current = true;
+    cancelled.current = false;
+    setTyped("");
+
+    let out = "";
+
+    for (const line of script) {
+      if (cancelled.current) break;
+
+      if (!line.text) {
+        out += "\n";
+        setTyped(out);
+        await sleep(line.pauseAfter ?? 0);
+        continue;
+      }
+
+      for (let i = 0; i < line.text.length; i++) {
+        if (cancelled.current) break;
+        out += line.text[i];
+        setTyped(out);
+        await sleep(line.speed ?? 12);
+      }
+
+      out += "\n";
+      setTyped(out);
+      await sleep(line.pauseAfter ?? 0);
+    }
+
+    running.current = false;
+  };
+
+  // recomeça ao montar e ao trocar idioma
+  useEffect(() => {
+    runTyping();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === "Escape" || e.key === " ") skip();
+    };
+    const onClick = () => skip();
+
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+
+    return () => {
+      cancelled.current = true;
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
 
   return (
-    <div className="page">
-      <SectionTitle title={t("profile.aboutTitle")} />
+    <div className="stack">
+      <div className="section-title">
+        <h1>{t("about.title")}</h1>
+      </div>
 
-      <div className="card">
-        <div className="prose">
-          {ta("profile.about").map((p) => (
-            <p key={p}>{p}</p>
-          ))}
+      <div className={styles.aboutTerminal}>
+        <div className={styles.aboutTerminalTop}>
+          <span className={styles.aboutDot} />
+          <span className={styles.aboutTerminalTitle}>C:\\Users\\visitor</span>
+          <span className={styles.aboutTerminalHint}>{t("about.hint")}</span>
         </div>
 
-        <hr className="divider" />
-
-        <h2 className="h2">{t("profile.doTitle")}</h2>
-
-        <div className="grid-2">
-          <div className="mini-card">
-            <h3>{t("profile.webTitle")}</h3>
-            <p className="muted">{t("profile.webDesc")}</p>
-          </div>
-
-          <div className="mini-card">
-            <h3>{t("profile.apiTitle")}</h3>
-            <p className="muted">{t("profile.apiDesc")}</p>
-          </div>
-        </div>
+        <pre className={styles.aboutTerminalBody}>
+          {typed}
+          <span className={styles.aboutCursor} />
+        </pre>
       </div>
     </div>
   );

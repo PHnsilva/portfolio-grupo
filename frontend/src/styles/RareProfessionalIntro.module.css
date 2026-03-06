@@ -137,7 +137,7 @@
 }
 
 /* ===== Dramatic fade (flash/vinheta) ===== */
-.rpPhase-dramaticFade{
+.rpPhaseDramaticFade{
   animation: rpDramatic 520ms ease-in-out 1;
 }
 @keyframes rpDramatic {
@@ -272,6 +272,30 @@
   opacity: 1;
   filter: none;
   transform: none;
+}
+
+.red {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #27c93f;
+}
+
+.yellow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #27c93f;
+}
+
+.green {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #27c93f;
 }
 
 /* Acessibilidade */

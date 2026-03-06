@@ -6,17 +6,14 @@ interface Props {
 }
 
 export default function TerminalText({ lines, speed = 25 }: Props) {
-  const [displayed, setDisplayed] = useState<string[]>(
-    lines.map(() => "")
-  );
-
+  const [displayed, setDisplayed] = useState<string[]>(lines.map(() => ""));
   const [currentLine, setCurrentLine] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
 
   useEffect(() => {
     if (currentLine >= lines.length) return;
 
-    const timeout = setTimeout(() => {
+    const timeout = window.setTimeout(() => {
       setDisplayed((prev) => {
         const copy = [...prev];
         copy[currentLine] = lines[currentLine].slice(0, currentChar + 1);
@@ -24,14 +21,14 @@ export default function TerminalText({ lines, speed = 25 }: Props) {
       });
 
       if (currentChar + 1 < lines[currentLine].length) {
-        setCurrentChar(currentChar + 1);
+        setCurrentChar((c) => c + 1);
       } else {
-        setCurrentLine(currentLine + 1);
+        setCurrentLine((l) => l + 1);
         setCurrentChar(0);
       }
     }, speed);
 
-    return () => clearTimeout(timeout);
+    return () => window.clearTimeout(timeout);
   }, [currentChar, currentLine, lines, speed]);
 
   return (

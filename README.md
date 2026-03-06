@@ -237,7 +237,7 @@ portfolio-grupo/
 │  │  │  └─ AppRoutes.tsx
 │  │  ├─ types/
 │  │  │  └─ portfolio.ts
-│  │  ├─ App.css
+│  │  ├─ App.module.css
 │  │  ├─ App.tsx
 │  │  ├─ index.css
 │  │  └─ main.tsx
