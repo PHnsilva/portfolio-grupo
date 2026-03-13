@@ -23,7 +23,7 @@ function escapeHtml(str: string) {
 }
 
 export default function RareProfessionalIntro({ onFinish }: Props) {
-  const { lang, t } = useI18n();
+  const { t } = useI18n();
   const [phase, setPhase] = useState<Phase>("scan");
   const [scanProgress, setScanProgress] = useState(0);
   const [typed, setTyped] = useState("");
