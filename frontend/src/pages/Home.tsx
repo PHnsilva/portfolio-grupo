@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import About from "./About";
-import Experience from "./Experience";
 import Education from "./Education";
 import Projects from "./Projects";
 import Skills from "./Skills";
@@ -113,12 +112,6 @@ export default function Home({ introFinished }: HomeProps) {
         <section id="sobre" className="section">
           <div className="container">
             <About />
-          </div>
-        </section>
-
-        <section id="experiencias" className="section">
-          <div className="container">
-            <Experience />
           </div>
         </section>
 

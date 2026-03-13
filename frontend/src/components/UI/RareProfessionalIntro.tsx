@@ -36,11 +36,11 @@ export default function RareProfessionalIntro({ onFinish }: Props) {
     () => [
       t("intro.prompt.found"),
       t("intro.prompt.name", { name: profile.name }),
-      t("intro.prompt.type", { role: lang === "en" ? "Full Stack Developer" : "Desenvolvedor Full Stack" }),
+      t("intro.prompt.type", { role: t("profile.role") }),
       t("intro.prompt.level"),
       t("intro.prompt.rarity"),
     ],
-    [lang, t]
+    [t, profile.name]
   );
 
   const finish = () => {

@@ -12,7 +12,7 @@ export default function Navbar() {
     () => [
       { id: "inicio", label: t("nav.home") },
       { id: "sobre", label: t("nav.about") },
-      { id: "experiencias", label: t("nav.experience") },
+      { id: "educacao", label: t("home.educationTitle") },
       { id: "projetos", label: t("nav.projects") },
       { id: "competencias", label: t("nav.skills") },
     ],

@@ -1,35 +1,35 @@
 export const profile = {
-  name: "Felipe Parreiras",
-  role: "Desenvolvedor de Software Full Stack",
+  name: "Pedro Silva",
+  role: "Desenvolvedor Full Stack em formação",
 
-  heroImage: "/images/felipe-hero.jpeg",
+  heroImage: "/images/pedro-hero.jpeg",
 
   links: {
-    email: "felipe.parreiras04@gmail.com",
-    github: "https://github.com/FelipeParreiras",
-    linkedin: "https://linkedin.com/in/felipeparreiras",
+    email: "phnsilva1@gmail.com",
+    github: "https://github.com/PHnsilva",
+    linkedin: "https://www.linkedin.com/in/phnsilva1/",
   },
 
   hero: {
     eyebrow: "PROFILE // ONLINE",
     description:
-      "Desenvolvedor focado em criar interfaces modernas, experiências interativas e soluções full stack com identidade própria.",
+      "Estudante de Engenharia de Software com foco em aplicações web, APIs REST e integração entre componentes, construindo projetos com Java, Spring Boot, React e TypeScript.",
     scanner: "SCANNING PROFILE...",
     ctaProjects: "Ver projetos",
     ctaContact: "Contato",
-    stats: ["React", "Java", "Spring Boot", "AWS"],
+    stats: ["Java", "Spring Boot", "React", "TypeScript"],
     cards: [
       {
         title: "Foco",
-        text: "Criação de sistemas funcionais, visuais fortes e experiências interativas."
+        text: "Desenvolvimento de aplicações organizadas, versionadas e com atenção à qualidade."
       },
       {
         title: "Stack",
-        text: "Java, Spring Boot, React, TypeScript, Python, SQL e integrações."
+        text: "Java, Spring Boot, Python, React, TypeScript, SQL, Node.js e REST APIs."
       },
       {
         title: "Objetivo",
-        text: "Construir produtos memoráveis com identidade visual e boa arquitetura."
+        text: "Conquistar a primeira oportunidade na área e evoluir com projetos reais."
       }
     ]
   },
@@ -37,14 +37,14 @@ export const profile = {
   about: {
     title: "Sobre mim",
     hint: "Clique/Enter para pular",
-    terminalTitle: "C:\\Users\\visitor",
-    promptName: "Felipe Parreiras",
-    fileName: "sobre_mim.txt",
+    terminalTitle: "C:\\Users\\pedro",
+    promptName: "Pedro Silva",
+    fileName: "pedro_silva.txt",
     lines: [
-      "Sou desenvolvedor full stack com foco em construir soluções reais e úteis.",
-      "Tenho experiência com Java, Spring Boot, React, TypeScript, Python e SQL.",
-      "Gosto de unir boa arquitetura, automação e identidade visual forte nos projetos.",
-      "Atualmente venho evoluindo meu portfólio com uma temática inspirada em Matrix e gamificação."
+      "Sou estudante de Engenharia de Software na PUC Minas.",
+      "Tenho foco em desenvolvimento web, APIs REST e integração entre componentes.",
+      "Trabalho com Java, Spring Boot, React, TypeScript, Python e SQL em projetos acadêmicos e pessoais.",
+      "Busco minha primeira oportunidade na área para contribuir com entregas organizadas, versionadas e com foco em qualidade."
     ]
   }
 };

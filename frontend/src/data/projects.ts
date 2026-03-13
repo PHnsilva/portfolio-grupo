@@ -1,87 +1,38 @@
 import type { Project } from "../types/portfolio";
 
 export const projects: Project[] = [
-
   {
-    slug: "troca-puc",
-
-    title: "Troca PUC",
-
+    slug: "calendar-mate",
+    title: "CalendarMate",
     description:
-      "Plataforma desenvolvida para facilitar trocas de materiais e itens entre estudantes da PUC Minas.",
-
-    stack: [
-      "React",
-      "Node.js",
-      "TypeScript",
-      "SQL"
-    ],
-
-    links: {
-      repo: "",
-      live: ""
-    }
-  },
-
-  {
-    slug: "painel-evc",
-
-    title: "Painel EVC",
-
-    description:
-      "Sistema completo de gestão de vistorias para taxistas com agendamentos, ordens de serviço, controle administrativo e relatórios.",
-
+      "Backend Spring Boot para agendamentos integrado ao Google Calendar, com fluxo sem login e gerenciamento por token.",
     stack: [
       "Java",
       "Spring Boot",
-      "React",
-      "Azure",
+      "REST APIs",
+      "Google Calendar",
       "SQL"
     ],
-
     links: {
-      repo: "",
+      repo: "https://github.com/PHnsilva/CalendarMate",
       live: ""
     }
   },
 
   {
-    slug: "batalha-digimon",
-
-    title: "Batalha Digimon",
-
+    slug: "crud-usuarios-ef-inmemory",
+    title: "CRUD Usuários EF InMemory",
     description:
-      "Projeto de automação e análise de dados envolvendo scraping e processamento de informações do jogo Digimon.",
-
+      "API REST em C# (.NET 8) com Entity Framework Core e banco InMemory para cadastro e gerenciamento de usuários.",
     stack: [
-      "Python",
-      "Selenium",
-      "MySQL"
+      "C#",
+      ".NET 8",
+      "Entity Framework Core",
+      "REST APIs",
+      "Swagger"
     ],
-
     links: {
-      repo: "",
-      live: ""
-    }
-  },
-
-  {
-    slug: "plataforma-chamados",
-
-    title: "Plataforma de Chamados",
-
-    description:
-      "Sistema de gerenciamento de chamados utilizando arquitetura de microsserviços e integração com AWS.",
-
-    stack: [
-      "Java",
-      "Spring Boot",
-      "AWS",
-      "DynamoDB"
-    ],
-
-    links: {
-      repo: "",
+      repo: "https://github.com/PHnsilva/crud-usuarios-ef-inmemory",
       live: ""
     }
   }
