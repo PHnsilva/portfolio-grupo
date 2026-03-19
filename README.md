@@ -1,4 +1,4 @@
-# 🏷️ Portfólio
+# 🏷️ Portfólio PHnsilva
 
 Portfólio web desenvolvido em grupo com foco em apresentação profissional, organização de conteúdo e experiência visual interativa.  
 A aplicação reúne informações sobre perfil, experiências, formação, projetos, competências e contato, além de incluir elementos diferenciados como **suporte a múltiplos idiomas** e um **minigame Flappy** integrado ao projeto.
